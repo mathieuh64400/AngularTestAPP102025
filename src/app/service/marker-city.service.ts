@@ -16,11 +16,13 @@ export class MarkerCityService {
   constructor(private http: HttpClient) { }
   getCity(): Observable<City[]> {
 
-    this.http.get<City[]>(this.api).pipe(
-      map(cities => cities.slice(0, 150))
-    ).subscribe((val) => console.log(val)
+    this.http.get<City[]>(this.api)
+      /*  .pipe(
+          map(cities => cities.slice(0, 150))
+        )*/
+      .subscribe((val) => console.log(val)
 
-    );
+      );
     return this.http.get<City[]>(this.api);
   }
 }
