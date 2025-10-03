@@ -64,7 +64,7 @@ export class MapComponent implements AfterViewInit, OnInit {
     /*.pipe(
       map(cities => cities.slice(0, 150))
     )*/
-    this.serv.getCity().subscribe((value) => {
+    this.serv.getCity().pipe(map(cities => cities.slice(0, 2000))).subscribe((value) => {
       this.listCity = value;
       console.log(this.listCity);
 
