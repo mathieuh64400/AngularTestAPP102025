@@ -83,14 +83,17 @@ export class MapComponent implements AfterViewInit, OnInit {
       console.log(this.listCity);
 
       this.listCity.forEach(element => {
-        console.log(+element.latitude_centre, " ", +element.longitude_centre);
+        if (!isNaN(+element.latitude_centre) && !isNaN(+element.longitude_centre)) {
+          console.log(+element.latitude_centre, " ", +element.longitude_centre);
 
-        L.marker([+element.latitude_centre, +element.longitude_centre]).bindPopup(
-          `<div>Nom: ${element.nom_standard}</div>` +
-          `<div>State: ${element.dep_nom}</div>` +
-          `<div>Population: ${element.population} habitants</div>` +
-          `<div>lien :  <a href="${element.url_wikipedia}">Aller sur le portail wiki de la ville </a> </div>`
-        ).addTo(this.map)
+          L.marker([+element.latitude_centre, +element.longitude_centre]).bindPopup(
+            `<div>Nom: ${element.nom_standard}</div>` +
+            `<div>State: ${element.dep_nom}</div>` +
+            `<div>Population: ${element.population} habitants</div>` +
+            `<div>lien :  <a href="${element.url_wikipedia}">Aller sur le portail wiki de la ville </a> </div>`
+          ).addTo(this.map)
+
+        }
 
 
       });
